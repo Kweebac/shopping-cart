@@ -8,8 +8,14 @@ header {
   grid-auto-flow: column;
   align-items: center;
   justify-items: center;
-  grid-template-columns: 1fr 1fr 1fr; /* FIX SPACING */
+  gap: 1.5rem;
+
+  background-color: rgba(0, 0, 0, 0.1);
   padding: 0.2rem 1rem;
+
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 header > a {
   justify-self: start;
@@ -25,7 +31,7 @@ header > div:first-of-type {
 }
 header input {
   width: 30vw;
-  min-width: 15rem;
+  min-width: 18rem;
   height: 2rem;
   border-radius: 6px;
   border: 1px solid rgb(161, 161, 170);
@@ -63,11 +69,11 @@ header > nav {
 header > nav ul {
   display: grid;
   grid-auto-flow: column;
-  gap: 4rem;
+  gap: 4vw;
   list-style: none;
 }
 header > nav a {
-  color: rgb(31, 41, 55);
+  color: black;
   font-size: 0.9rem;
   text-decoration: none;
 }

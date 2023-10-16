@@ -1,0 +1,44 @@
+.card {
+  display: grid;
+
+  background: none;
+  border: none;
+  text-align: start;
+  height: max-content;
+  cursor: pointer;
+}
+
+.card > img {
+  justify-self: center;
+  height: 10rem;
+  margin-bottom: 1rem;
+}
+.card > div:first-of-type {
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+}
+
+.card > .rating {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: start;
+
+  margin-bottom: 1.5rem;
+}
+.card > .rating > span {
+  font-size: 24px;
+  color: lightgray;
+}
+.card > .rating > span.checked {
+  color: orange;
+}
+.card > .rating > span:last-of-type {
+  margin-left: 0.3rem;
+  color: gray;
+  font-size: 15px;
+  align-self: center;
+}
+.card > .price {
+  font-weight: 600;
+  font-size: 1.2rem;
+}

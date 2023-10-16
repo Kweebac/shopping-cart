@@ -1,0 +1,25 @@
+.backgroundImage {
+  margin-top: -70.8px;
+  background-image: url(https://anegaenergiesmanufacturing.org/wp-content/uploads/2021/12/fashion-designer-template-new-arrival-header-img.jpg);
+  height: 20rem;
+  width: 100vw;
+
+  position: relative;
+}
+
+main {
+  margin: 0 auto;
+  justify-self: center;
+  width: 50vw;
+}
+main > div {
+  margin: 2rem 0;
+  color: rgb(31, 41, 55);
+  font-size: 14px;
+  font-weight: bold;
+}
+main > #cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2.5rem;
+}
