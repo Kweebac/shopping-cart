@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Shop from "./Shop/Shop";
-import Home from "./Home/Home";
+import Shop from "../Shop/Shop";
+import Home from "../Home/Home";
 import { useEffect, useState } from "react";
 
 function App() {

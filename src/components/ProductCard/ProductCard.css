@@ -10,7 +10,8 @@
 
 .card > img {
   justify-self: center;
-  height: 10rem;
+  max-width: 100%;
+  height: 8rem;
   margin-bottom: 1rem;
 }
 .card > div:first-of-type {
@@ -30,7 +31,7 @@
   color: lightgray;
 }
 .card > .rating > span.checked {
-  color: orange;
+  color: rgb(251, 191, 36);
 }
 .card > .rating > span:last-of-type {
   margin-left: 0.3rem;
