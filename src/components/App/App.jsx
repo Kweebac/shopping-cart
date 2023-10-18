@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Shop from "../Shop/Shop";
-import Home from "../Home/Home";
 import { useEffect, useState } from "react";
 
 function App() {
@@ -24,8 +23,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route index element={<Home />} />
-        <Route path="/shop" element={<Shop products={products} />} />
+        <Route index element={<Shop products={products} />} />
       </Routes>
     </BrowserRouter>
   );

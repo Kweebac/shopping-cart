@@ -66,14 +66,3 @@ header > nav {
   justify-self: end;
   padding-right: 1rem;
 }
-header > nav ul {
-  display: grid;
-  grid-auto-flow: column;
-  gap: 4vw;
-  list-style: none;
-}
-header > nav a {
-  color: black;
-  font-size: 0.9rem;
-  text-decoration: none;
-}

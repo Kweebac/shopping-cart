@@ -4,21 +4,43 @@ import ProductCard from "../ProductCard/ProductCard";
 import { useState } from "react";
 
 function Shop({ products }) {
-  const [filteredProducts, setFilteredProducts] = useState(products);
+  const [selectedSort, setSelectedSort] = useState("popularity");
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const filteredProducts = createFilteredProducts();
+
+  function createFilteredProducts() {
+    return sortProducts(
+      selectedCategory === "all"
+        ? products
+        : products.filter((product) => product.category === selectedCategory)
+    );
+  }
+
+  function sortProducts(filteredProducts) {
+    switch (selectedSort) {
+      case "popularity":
+        return filteredProducts.toSorted((a, b) => b.rating.count - a.rating.count);
+      case "rating":
+        return filteredProducts.toSorted((a, b) => b.rating.rate - a.rating.rate);
+      case "priceAscending":
+        return filteredProducts.toSorted((a, b) => a.price - b.price);
+      case "priceDescending":
+        return filteredProducts.toSorted((a, b) => b.price - a.price);
+      case "alphabeticalAscending":
+        return filteredProducts.toSorted((a, b) => b.title < a.title);
+      case "alphabeticalDescending":
+        return filteredProducts.toSorted((a, b) => b.title > a.title);
+    }
+  }
 
   function handleClick(e) {
     const li = e.target;
+
     if (li.className !== "active") {
       for (const li of document.querySelectorAll("main > aside li")) li.className = "";
       li.className = "active";
 
-      setFilteredProducts(
-        li.textContent === "All"
-          ? products
-          : products.filter((product) => product.category === li.textContent.toLowerCase())
-      );
-    } else {
-      return;
+      setSelectedCategory(li.textContent.toLowerCase());
     }
   }
 
@@ -30,13 +52,13 @@ function Shop({ products }) {
         <aside>
           <h1>Categories</h1>
           <ul>
-            <li className="active" onClick={(e) => handleClick(e)}>
+            <li className="active" onClick={handleClick}>
               All
             </li>
-            <li onClick={(e) => handleClick(e)}>Men's Clothing</li>
-            <li onClick={(e) => handleClick(e)}>Women's Clothing</li>
-            <li onClick={(e) => handleClick(e)}>Jewelery</li>
-            <li onClick={(e) => handleClick(e)}>Electronics</li>
+            <li onClick={handleClick}>Men's Clothing</li>
+            <li onClick={handleClick}>Women's Clothing</li>
+            <li onClick={handleClick}>Jewelery</li>
+            <li onClick={handleClick}>Electronics</li>
           </ul>
         </aside>
         <section>
@@ -44,13 +66,13 @@ function Shop({ products }) {
             <div>{filteredProducts.length} items</div>
             <div>
               Sort by{" "}
-              <select name="" id="">
-                <option value="">Popularity</option>
-                <option value="">Rating</option>
-                <option value="">Price (low to high)</option>
-                <option value="">Price (high to low)</option>
-                <option value="">A - Z</option>
-                <option value="">Z - A</option>
+              <select onChange={(e) => setSelectedSort(e.target.value)}>
+                <option value="popularity">Popularity</option>
+                <option value="rating">Rating</option>
+                <option value="priceAscending">Price (low to high)</option>
+                <option value="priceDescending">Price (high to low)</option>
+                <option value="alphabeticalAscending">A - Z</option>
+                <option value="alphabeticalDescending">Z - A</option>
               </select>
             </div>
           </div>
