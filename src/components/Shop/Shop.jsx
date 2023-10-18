@@ -6,14 +6,19 @@ import { useState } from "react";
 function Shop({ products }) {
   const [selectedSort, setSelectedSort] = useState("popularity");
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [searchValue, setSearchValue] = useState("");
   const filteredProducts = createFilteredProducts();
 
   function createFilteredProducts() {
+    // make more readable
     return sortProducts(
       selectedCategory === "all"
         ? products
         : products.filter((product) => product.category === selectedCategory)
-    );
+    ).filter((product) => {
+      if (searchValue) return new RegExp(searchValue, "i").test(product.title);
+      else return true;
+    });
   }
 
   function sortProducts(filteredProducts) {
@@ -46,7 +51,7 @@ function Shop({ products }) {
 
   return (
     <>
-      <Navbar />
+      <Navbar setSearchValue={setSearchValue} />
       <div className="backgroundImage"></div>
       <main>
         <aside>

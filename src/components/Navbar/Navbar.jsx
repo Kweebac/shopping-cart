@@ -1,17 +1,18 @@
 import "./Navbar.css";
-import { Link } from "react-router-dom";
 
-function Navbar() {
+function Navbar({ setSearchValue }) {
   return (
     <header>
-      <Link to="/">
-        <img
-          src="https://darkwool.github.io/shopping-cart/assets/logo-e84295bf.svg"
-          alt="Logo"
-        />
-      </Link>
+      <img
+        src="https://darkwool.github.io/shopping-cart/assets/logo-e84295bf.svg"
+        alt="Logo"
+      />
       <div>
-        <input type="text" placeholder="Search for your favourite product..." />
+        <input
+          onChange={(e) => setSearchValue(e.target.value)}
+          type="text"
+          placeholder="Search for your favourite product..."
+        />
         <button>
           <svg fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
             <path
