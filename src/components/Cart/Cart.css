@@ -1,0 +1,103 @@
+#blur {
+  z-index: 2;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  opacity: 0.7;
+}
+
+#cart {
+  z-index: 2;
+  position: fixed;
+  right: 0;
+  background-color: white;
+  width: calc(36rem - 8rem);
+  height: calc(100vh - 4rem);
+  padding: 2rem 4rem;
+
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+}
+
+/* HEADER */
+#cart > #header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+#cart > #header > h1 {
+  margin: 0;
+}
+#cart > #header > button {
+  background-color: white;
+  border: none;
+}
+#cart > #header svg {
+  width: 2rem;
+  cursor: pointer;
+}
+#cart > #header svg:hover {
+  scale: 1.1;
+}
+
+/* ITEMS */
+#cart > #productItems {
+  min-height: 2rem;
+  display: grid;
+  gap: 2rem;
+  overflow: scroll;
+  margin-bottom: 2rem;
+}
+
+/* FOOTER */
+#cart > #footer {
+  padding-top: 1rem;
+  height: 10rem;
+  align-self: end;
+  border-top: 1px solid lightgray;
+
+  display: grid;
+  gap: 1rem;
+}
+
+#cart > #footer > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#cart > #footer > div > div:first-of-type {
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+#cart > #footer > div > div:last-of-type {
+  font-weight: 600;
+  font-size: 1.35rem;
+}
+#cart > #footer button {
+  cursor: pointer;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 50px;
+  height: max-content;
+  padding: 1rem;
+  box-shadow: 7px 10px black;
+
+  justify-content: center;
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  gap: 0.2rem;
+}
+#cart > #footer button:hover {
+  background-color: rgb(255 245 0);
+  transition: 0.1s;
+}
+#cart > #footer > button svg {
+  width: 1.8rem;
+  margin-top: 3px;
+}
+#cart > #footer > button div {
+  font-size: 1.25rem;
+  font-weight: 600;
+}

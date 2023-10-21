@@ -2,6 +2,7 @@ import "./Shop.css";
 import Navbar from "../Navbar/Navbar";
 import ProductCard from "../ProductCard/ProductCard";
 import { useState } from "react";
+import Cart from "../Cart/Cart";
 
 function Shop({ products }) {
   const [selectedSort, setSelectedSort] = useState("popularity");
@@ -9,16 +10,22 @@ function Shop({ products }) {
   const [searchValue, setSearchValue] = useState("");
   const filteredProducts = createFilteredProducts();
 
+  const [cart, setCart] = useState([]);
+  const [cartVisible, setCartVisible] = useState(false);
+
   function createFilteredProducts() {
-    // make more readable
-    return sortProducts(
+    let filteredProducts =
       selectedCategory === "all"
         ? products
-        : products.filter((product) => product.category === selectedCategory)
-    ).filter((product) => {
-      if (searchValue) return new RegExp(searchValue, "i").test(product.title);
-      else return true;
-    });
+        : products.filter((product) => product.category === selectedCategory);
+
+    filteredProducts = sortProducts(filteredProducts);
+
+    filteredProducts = filteredProducts.filter((product) =>
+      searchValue ? new RegExp(searchValue, "i").test(product.title) : true
+    );
+
+    return filteredProducts;
   }
 
   function sortProducts(filteredProducts) {
@@ -51,7 +58,9 @@ function Shop({ products }) {
 
   return (
     <>
-      <Navbar setSearchValue={setSearchValue} />
+      {cartVisible && <Cart setCartVisible={setCartVisible} cart={cart} setCart={setCart} />}
+
+      <Navbar setSearchValue={setSearchValue} setCartVisible={setCartVisible} cart={cart} />
       <div className="backgroundImage"></div>
       <main>
         <aside>
@@ -60,8 +69,8 @@ function Shop({ products }) {
             <li className="active" onClick={handleClick}>
               All
             </li>
-            <li onClick={handleClick}>Men's Clothing</li>
-            <li onClick={handleClick}>Women's Clothing</li>
+            <li onClick={handleClick}>Men&apos;s Clothing</li>
+            <li onClick={handleClick}>Women&apos;s Clothing</li>
             <li onClick={handleClick}>Jewelery</li>
             <li onClick={handleClick}>Electronics</li>
           </ul>
@@ -82,9 +91,19 @@ function Shop({ products }) {
             </div>
           </div>
           <div id="cards">
-            {filteredProducts.map((product) => (
-              <ProductCard product={product} key={product.id} />
-            ))}
+            {filteredProducts.length ? (
+              filteredProducts.map((product) => (
+                <ProductCard
+                  product={product}
+                  key={product.id}
+                  setCartVisible={setCartVisible}
+                  cart={cart}
+                  setCart={setCart}
+                />
+              ))
+            ) : (
+              <div>No items found, please try again.</div>
+            )}
           </div>
         </section>
       </main>

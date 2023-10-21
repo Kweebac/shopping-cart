@@ -1,5 +1,6 @@
 #root {
   display: grid;
+  padding-bottom: 2rem;
 }
 
 .backgroundImage {
@@ -37,7 +38,7 @@ aside li:not(.active):hover {
 
 main {
   display: grid;
-  grid-auto-flow: column;
+  grid-template-columns: auto 1fr;
   gap: 4rem;
 
   justify-self: center;
