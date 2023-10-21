@@ -90,7 +90,7 @@ function Shop({ products }) {
               </select>
             </div>
           </div>
-          <div id="cards">
+          <div data-testid="test" id="cards">
             {filteredProducts.length ? (
               filteredProducts.map((product) => (
                 <ProductCard
